@@ -1,0 +1,52 @@
+[
+    {
+        "fieldInput": "id:increments",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": true,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "fieldInput": "description:string",
+        "htmlType": "textarea",
+        "validations": "required|max:150",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "fieldInput": "criteriaofacceptance:text",
+        "htmlType": "textarea",
+        "validations": "integer",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "fieldInput": "estimation:integer",
+        "htmlType": "number",
+        "validations": "integer",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "fieldInput": "status:integer",
+        "htmlType": "select",
+        "validations": "integer|in:0,1,2",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    }
+]

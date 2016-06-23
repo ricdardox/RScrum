@@ -1,0 +1,42 @@
+[
+    {
+        "fieldInput": "id:increments",
+        "htmlType": "text",
+        "validations": "",
+        "searchable": false,
+        "fillable": false,
+        "primary": false,
+        "inForm": false,
+        "inIndex": false
+    },
+    {
+        "fieldInput": "userstory_id:integer",
+        "htmlType": "number",
+        "validations": "integer|exists:userstories,id",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "fieldInput": "description:text",
+        "htmlType": "textarea",
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    },
+    {
+        "fieldInput": "duration:time",
+        "htmlType": "date",
+        "validations": "",
+        "searchable": true,
+        "fillable": true,
+        "primary": false,
+        "inForm": true,
+        "inIndex": true
+    }
+]
