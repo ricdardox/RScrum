@@ -12,13 +12,13 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class TaskController extends InfyOmBaseController
-{
+class TaskController extends InfyOmBaseController {
+
     /** @var  TaskRepository */
     private $taskRepository;
 
-    public function __construct(TaskRepository $taskRepo)
-    {
+    public function __construct(TaskRepository $taskRepo) {
+        $this->middleware('auth');
         $this->taskRepository = $taskRepo;
     }
 
@@ -28,13 +28,12 @@ class TaskController extends InfyOmBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->taskRepository->pushCriteria(new RequestCriteria($request));
         $tasks = $this->taskRepository->all();
 
         return view('tasks.index')
-            ->with('tasks', $tasks);
+                        ->with('tasks', $tasks);
     }
 
     /**
@@ -42,8 +41,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('tasks.create');
     }
 
@@ -54,8 +52,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function store(CreateTaskRequest $request)
-    {
+    public function store(CreateTaskRequest $request) {
         $input = $request->all();
 
         $task = $this->taskRepository->create($input);
@@ -72,8 +69,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $task = $this->taskRepository->findWithoutFail($id);
 
         if (empty($task)) {
@@ -92,8 +88,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $task = $this->taskRepository->findWithoutFail($id);
 
         if (empty($task)) {
@@ -113,8 +108,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateTaskRequest $request)
-    {
+    public function update($id, UpdateTaskRequest $request) {
         $task = $this->taskRepository->findWithoutFail($id);
 
         if (empty($task)) {
@@ -137,8 +131,7 @@ class TaskController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $task = $this->taskRepository->findWithoutFail($id);
 
         if (empty($task)) {
@@ -153,4 +146,5 @@ class TaskController extends InfyOmBaseController
 
         return redirect(route('tasks.index'));
     }
+
 }

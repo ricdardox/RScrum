@@ -46,7 +46,7 @@ class Task extends Model {
      * @var array
      */
     protected $casts = [
-        'userstory_id' => 'integer',
+        'userstory_id' => 'integer|exists,user_stories,id',
         'description' => 'string'
     ];
 

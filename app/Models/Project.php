@@ -17,19 +17,16 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  *      )
  * )
  */
-class Project extends Model
-{
+class Project extends Model {
+
     use SoftDeletes;
 
     public $table = 'projects';
-    
-
     protected $dates = ['deleted_at'];
-
-
     public $fillable = [
         'name',
-        'description'
+        'description',
+        'statusproject_id'
     ];
 
     /**
@@ -38,7 +35,6 @@ class Project extends Model
      * @var array
      */
     protected $casts = [
-        
     ];
 
     /**
@@ -48,10 +44,24 @@ class Project extends Model
      */
     public static $rules = [
         'name' => 'required|max:150',
-        'description' => 'required|max:250'
+        'description' => 'required|max:250',
+        'statusproject_id' => 'required|integer|exists:status_projects,id'
     ];
-    
+
     public function userStories() {
         return $this->hasMany('\App\Models\UserStory');
     }
+    
+    public function sprints() {
+        return $this->hasMany('\App\Models\Sprint');
+    }
+
+    public function allTasks() {
+        return $this->hasMany('\App\Models\UserStory')->join('tasks', 'user_stories.id', '=', 'tasks.userstory_id')->get();
+    }
+
+    public function statusProject() {
+        return $this->belongsTo('\App\Models\StatusProject', 'statusproject_id');
+    }
+
 }

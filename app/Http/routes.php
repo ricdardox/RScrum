@@ -59,3 +59,7 @@ Route::resource('userStories', 'UserStoryController');
 Route::resource('sprints', 'SprintController');
 
 Route::resource('tasks', 'TaskController');
+
+Route::resource('users', 'UserController');
+
+Route::controller('userscon', 'UserController');

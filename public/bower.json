@@ -1,0 +1,23 @@
+{
+  "name": "rscrum",
+  "homepage": "https://github.com/ricdardox/RScrum",
+  "authors": [
+    "rmontes-resolve <rmontes@resolvestudio.co>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-material-datetimepicker": "^2.7.1",
+    "material-design-icons": "^2.2.3"
+  }
+}

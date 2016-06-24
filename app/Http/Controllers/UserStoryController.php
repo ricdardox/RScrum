@@ -18,6 +18,7 @@ class UserStoryController extends InfyOmBaseController {
     private $userStoryRepository;
 
     public function __construct(UserStoryRepository $userStoryRepo) {
+        $this->middleware('auth');
         $this->userStoryRepository = $userStoryRepo;
     }
 

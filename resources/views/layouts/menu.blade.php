@@ -6,11 +6,11 @@
 
 <li class="{{ Request::is('userStories*') ? 'active' : '' }}">
     <a href="{!! route('userStories.index') !!}">
-         <img src="{{asset('images/storyuser.png')}}" width="30"/> <span>UserStories</span></a>
+        <img src="{{asset('images/storyuser.png')}}" width="30"/> <span>UserStories</span></a>
 </li>
 <li class="{{ Request::is('sprints*') ? 'active' : '' }}">
     <a href="{!! route('sprints.index') !!}"> 
-         <img src="{{asset('images/sprint.png')}}" width="30"/>  <span>Sprints</span></a>
+        <img src="{{asset('images/sprint.png')}}" width="30"/>  <span>Sprints</span></a>
 </li>
 
 <li class="{{ Request::is('tasks*') ? 'active' : '' }}">
@@ -18,3 +18,7 @@
         <img src="{{asset('images/task.png')}}" width="30"/> <span>Tasks</span></a>
 </li>
 
+<li class="{{ Request::is('users*') ? 'active' : '' }}">
+    <a href="{!! route('users.index') !!}">
+        <img src="{{asset('images/user.png')}}" class="user-image" width="30" alt="User Image"/> <span>Users</span></a>
+</li>

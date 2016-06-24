@@ -12,13 +12,13 @@ use Flash;
 use Prettus\Repository\Criteria\RequestCriteria;
 use Response;
 
-class SprintController extends InfyOmBaseController
-{
+class SprintController extends InfyOmBaseController {
+
     /** @var  SprintRepository */
     private $sprintRepository;
 
-    public function __construct(SprintRepository $sprintRepo)
-    {
+    public function __construct(SprintRepository $sprintRepo) {
+        $this->middleware('auth');
         $this->sprintRepository = $sprintRepo;
     }
 
@@ -28,13 +28,12 @@ class SprintController extends InfyOmBaseController
      * @param Request $request
      * @return Response
      */
-    public function index(Request $request)
-    {
+    public function index(Request $request) {
         $this->sprintRepository->pushCriteria(new RequestCriteria($request));
         $sprints = $this->sprintRepository->all();
 
         return view('sprints.index')
-            ->with('sprints', $sprints);
+                        ->with('sprints', $sprints);
     }
 
     /**
@@ -42,8 +41,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function create()
-    {
+    public function create() {
         return view('sprints.create');
     }
 
@@ -54,8 +52,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function store(CreateSprintRequest $request)
-    {
+    public function store(CreateSprintRequest $request) {
         $input = $request->all();
 
         $sprint = $this->sprintRepository->create($input);
@@ -72,8 +69,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function show($id)
-    {
+    public function show($id) {
         $sprint = $this->sprintRepository->findWithoutFail($id);
 
         if (empty($sprint)) {
@@ -92,8 +88,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function edit($id)
-    {
+    public function edit($id) {
         $sprint = $this->sprintRepository->findWithoutFail($id);
 
         if (empty($sprint)) {
@@ -113,8 +108,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function update($id, UpdateSprintRequest $request)
-    {
+    public function update($id, UpdateSprintRequest $request) {
         $sprint = $this->sprintRepository->findWithoutFail($id);
 
         if (empty($sprint)) {
@@ -137,8 +131,7 @@ class SprintController extends InfyOmBaseController
      *
      * @return Response
      */
-    public function destroy($id)
-    {
+    public function destroy($id) {
         $sprint = $this->sprintRepository->findWithoutFail($id);
 
         if (empty($sprint)) {
@@ -153,4 +146,5 @@ class SprintController extends InfyOmBaseController
 
         return redirect(route('sprints.index'));
     }
+
 }

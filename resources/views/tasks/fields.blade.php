@@ -1,4 +1,4 @@
-@inject('userStroryCon','\App\Http\Controllers\UserStoryController')
+ @inject('userStroryCon','\App\Http\Controllers\UserStoryController')
 
 <!-- Userstory Id Field -->
 <div class="form-group col-sm-6">
@@ -15,7 +15,7 @@
 <!-- Duration Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('duration', 'Duration:') !!}
-    {!! Form::time('duration', null, ['class' => 'form-control']) !!}
+    {!! Form::text('duration', null, ['class' => 'form-control time_']) !!}
 </div>
 
 <!-- Submit Field -->
