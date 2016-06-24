@@ -18,7 +18,7 @@ class CreatesprintsTable extends Migration {
             $table->text('resumereview');
             $table->timestamp('dateretrospective');
             $table->text('resumeretrospective');
-            $table->integer('project_id');
+            $table->integer('project_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('project_id')

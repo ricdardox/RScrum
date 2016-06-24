@@ -13,13 +13,13 @@ class CreatetasksTable extends Migration {
     public function up() {
         Schema::create('tasks', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('userstory_id');
+            $table->integer('userstory_id')->unsigned();
             $table->text('description');
             $table->time('duration');
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('userstory_id')
-                    ->references('id')->on('userstories')
+                    ->references('id')->on('user_stories')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
         });
