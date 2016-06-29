@@ -32,7 +32,7 @@ class SprintController extends InfyOmBaseController {
         $this->sprintRepository->pushCriteria(new RequestCriteria($request));
         $sprints = $this->sprintRepository->all();
 
-        return view('sprints.index')
+        return view('sprints.sprintsProject')
                         ->with('sprints', $sprints);
     }
 

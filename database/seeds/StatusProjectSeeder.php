@@ -32,6 +32,7 @@ class StatusProjectSeeder extends Seeder {
                 'classcolor' => 'bg-green'
             ],
         ];
+        DB::delete('delete from status_projects');
         foreach ($status as $key => $value) {
 
             $statusProject = new App\Models\StatusProject();

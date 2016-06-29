@@ -13,7 +13,7 @@
 
 <!-- Criteriaofacceptance Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('criteriaofacceptance', 'Criteriaofacceptance:') !!}
+    {!! Form::label('criteriaofacceptance', 'Criteria of acceptance:') !!}
     {!! Form::textarea('criteriaofacceptance', null, ['class' => 'form-control']) !!}
 </div>
 
@@ -22,15 +22,12 @@
     {!! Form::label('estimation', 'Estimation:') !!}
     {!! Form::number('estimation', null, ['class' => 'form-control']) !!}
 </div>
+@inject('statusUserStoryCon','\App\Http\Controllers\StatusUserStoryController')
 
 <!-- Status Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('status', 'Status:') !!}
-    {!! Form::select('status', [
-    0 => 'Pending',
-    1 => 'In progress',
-    2 => 'Finished'
-    ], null, ['class' => 'form-control']) !!}
+    {!! Form::label('statususerstory_id', 'Status:') !!}
+    {!! Form::select('statususerstory_id', $statusUserStoryCon->getStatusUserStories(), null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Submit Field -->
@@ -38,3 +35,7 @@
     {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
     <a href="{!! route('userStories.index') !!}" class="btn btn-default">Cancel</a>
 </div>
+<script>
+    CKEDITOR.replace('criteriaofacceptance');
+    CKEDITOR.replace('description');
+</script>

@@ -13,6 +13,8 @@
 
         <!-- Ionicons -->
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+        <script src="//cdn.ckeditor.com/4.5.9/standard/ckeditor.js"></script>
+
     </head>
 
     <body class="skin-blue sidebar-mini">
@@ -157,12 +159,12 @@
         <script src="https://cdn.datatables.net/1.10.11/js/jquery.dataTables.min.js"></script>
         <script src="https://cdn.datatables.net/1.10.11/js/dataTables.bootstrap.min.js"></script>
 
-        <link rel="stylesheet" href="{{asset('bower_components/bootstrap-material-design/dist/css/material.min.css')}}">
+<!--        <link rel="stylesheet" href="{{asset('bower_components/bootstrap-material-design/dist/css/material.min.css')}}">
         <link rel="stylesheet" href="{{asset('bower_components/material-design-icons/iconfont/material-icons.css')}}">
-        <link rel="stylesheet" href="{{asset('bower_components/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}">
-        <script src="{{asset('bower_components/bootstrap-material-design/dist/js/material.min.js')}}"></script>
+        <link rel="stylesheet" href="{{asset('bower_components/bootstrap-material-datetimepicker/css/bootstrap-material-datetimepicker.css')}}">-->
+        <!--<script src="{{asset('bower_components/bootstrap-material-design/dist/js/material.min.js')}}"></script>-->
         <script src="{{asset('bower_components/momentjs/min/moment-with-locales.min.js')}}"></script>
-        <script src="{{asset('bower_components/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>
+        <!--<script src="{{asset('bower_components/bootstrap-material-datetimepicker/js/bootstrap-material-datetimepicker.js')}}"></script>-->
         <script src="{{asset('js/main.js')}}"></script>
         @yield('scripts')
     </body>

@@ -10,6 +10,12 @@
     <p>{!! $task->userStory->description !!}</p>
 </div>
 
+<!-- Userstory Id Field -->
+<div class="form-group">
+    {!! Form::label('user_id', 'User:') !!}
+    <p>{!! $task->user->name or '' !!}</p>
+</div>
+
 <!-- Description Field -->
 <div class="form-group">
     {!! Form::label('description', 'Description:') !!}

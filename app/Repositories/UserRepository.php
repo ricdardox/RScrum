@@ -43,4 +43,8 @@ class UserRepository extends BaseRepository {
         return [];
     }
 
+    public function getUsers() {
+        return User::get();
+    }
+
 }

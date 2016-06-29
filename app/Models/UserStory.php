@@ -50,7 +50,7 @@ class UserStory extends Model {
         'description',
         'criteriaofacceptance',
         'estimation',
-        'status'
+        'statususerstory_id'
     ];
 
     /**
@@ -63,7 +63,7 @@ class UserStory extends Model {
         'description' => 'string',
         'criteriaofacceptance' => 'string',
         'estimation' => 'integer',
-        'status' => 'integer'
+        'statususerstory_id' => 'integer'
     ];
 
     /**
@@ -76,11 +76,32 @@ class UserStory extends Model {
         'description' => 'required|max:150',
         'criteriaofacceptance' => 'string',
         'estimation' => 'integer',
-        'status' => 'integer|in:0,1,2'
+        'statususerstory_id' => 'required|integer|exists:status_userstories,id'
     ];
 
     public function project() {
         return $this->belongsTo('\App\Models\Project');
+    }
+
+    public function statusUserStory() {
+        return $this->belongsTo('\App\Models\StatusUserStory', 'statususerstory_id');
+    }
+
+    public function tasks() {
+        return $this->hasMany('\App\Models\Task', 'userstory_id');
+    }
+
+    public function progress() {
+        $totalTrackingTime = 0;
+        $totalDuration = 0;
+        foreach ($this->hasMany('\App\Models\Task', 'userstory_id')->get() as $key => $value) {
+            $totalTrackingTime+=$value->trackingtimeSum();
+            $totalDuration+=$value->duration;
+        }
+        if ($totalDuration != 0) {
+            return round(($totalTrackingTime * 100) / $totalDuration, 2);
+        }
+        return 0;
     }
 
 }

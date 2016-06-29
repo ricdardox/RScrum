@@ -54,7 +54,9 @@ class TaskController extends InfyOmBaseController {
      */
     public function store(CreateTaskRequest $request) {
         $input = $request->all();
-
+        if ($input['user_id'] == '') {
+            unset($input['user_id']);
+        }
         $task = $this->taskRepository->create($input);
 
         Flash::success('Task saved successfully.');
@@ -116,8 +118,11 @@ class TaskController extends InfyOmBaseController {
 
             return redirect(route('tasks.index'));
         }
-
-        $task = $this->taskRepository->update($request->all(), $id);
+        $input = $request->all();
+        if ($input['user_id'] == '') {
+            unset($input['user_id']);
+        }
+        $task = $this->taskRepository->update($input, $id);
 
         Flash::success('Task updated successfully.');
 
@@ -145,6 +150,18 @@ class TaskController extends InfyOmBaseController {
         Flash::success('Task deleted successfully.');
 
         return redirect(route('tasks.index'));
+    }
+
+    public function progressBar($progress) {
+        if ($progress >= 0 && $progress <= 30) {
+            return 'danger';
+        } elseif ($progress > 30 && $progress <= 49) {
+            return 'warning';
+        } elseif ($progress >= 50 && $progress <= 89) {
+            return 'primary';
+        } elseif ($progress >= 90) {
+            return 'success';
+        }
     }
 
 }

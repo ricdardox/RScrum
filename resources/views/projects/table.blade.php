@@ -1,3 +1,5 @@
+@inject('userCon','\App\Http\Controllers\UserController')
+
 @foreach($projects as $project)
 
 <div class="col-md-4">
@@ -29,9 +31,26 @@
         <div class="box-footer no-padding">
             <ul class="nav nav-stacked">
                 <li><a href="#">User Stories <span class="pull-right badge bg-blue">{{count($project->userStories)}}</span></a></li>
-                <li><a href="#">Tasks <span class="pull-right badge bg-aqua">{{count($project->allTasks())}}</span></a></li>
+                <li><a href="#">Sprints durations <span class="pull-right badge bg-aqua">{{$project->sprints_durations}} (Weeks)</span></a></li>
                 <li><a href="#">Sprints <span class="pull-right badge bg-aqua">{{count($project->sprints)}}</span></a></li>
-                <li><a href="#">Followers <span class="pull-right badge bg-red">842</span></a></li>
+                <li>
+                    <a>
+                        <span>
+
+                            {{--*/$users=$project->users/*--}}
+                            Followers 
+                            <span class="pull-right badge bg-red">
+                                {{count($users)}}
+                            </span>
+                            <span style="display: inline-block;text-align: right;width: 70%" >
+
+                                @foreach($users as $keyUser=>$user)
+                                <img title="{{$user->name}}" width="25" src="{{ $userCon->getPathPublicUserImage($user->image)}}" alt="{{$user->name}}"  />
+                                @endforeach
+                            </span>
+                        </span>
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

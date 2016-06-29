@@ -36,7 +36,7 @@ class UserController extends InfyOmBaseController {
         if (!empty($image) && file_exists($this->pathUserImages . $image)) {
             return asset('images/users/') . '/' . $image;
         } else {
-            return asset('images/') . '/user.png';
+            return asset('images/') . '/nouser.png';
         }
     }
 
@@ -142,6 +142,7 @@ class UserController extends InfyOmBaseController {
 
         $filename = $request->file('image');
         $input = $request->all();
+
         if ($input['password'] == '') {
             unset($input['password']);
         } else {
@@ -229,5 +230,15 @@ class UserController extends InfyOmBaseController {
     public function getConfigfilter() {
         return response()->json($this->userRepository->configFilter());
     }
+
+    public function getUsers() {
+        $result = ['' => 'Select user'];
+        foreach ($this->userRepository->getUsers() as $key => $value) {
+            $result[$value->id] = $value->name;
+        }
+        return $result;
+    }
+
+    
 
 }

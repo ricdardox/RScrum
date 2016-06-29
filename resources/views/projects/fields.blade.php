@@ -9,6 +9,11 @@
     {!! Form::label('description', 'Description:') !!}
     {!! Form::text('description', null, ['class' => 'form-control']) !!}
 </div>
+<!-- Description Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('sprints_durations', 'Sprints durations (Weeks):') !!}
+    {!! Form::number('sprints_durations', null, ['class' => 'form-control']) !!}
+</div>
 @inject('statusProjectCon','\App\Http\Controllers\StatusProjectController')
 <!-- Status Field -->
 <div class="form-group col-sm-6">

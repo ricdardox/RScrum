@@ -6,6 +6,7 @@
 
 
 function main() {
-    $('.time_').bootstrapMaterialDatePicker({date: false, time: true, format: 'HH:mm'});
+//    $('.time_').bootstrapMaterialDatePicker({date: false, time: true, format: 'HH:mm'});
+    $('.dataTable').DataTable();
 }
 $(document).on('ready', main);

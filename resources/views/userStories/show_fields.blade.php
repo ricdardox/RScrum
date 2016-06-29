@@ -26,10 +26,14 @@
     {!! Form::label('estimation', 'Estimation:') !!}
     <p>{!! $userStory->estimation !!}</p>
 </div>
+{{--*/$status=$userStory->statusUserStory;/*--}}
 
 <!-- Status Field -->
 <div class="form-group">
     {!! Form::label('status', 'Status:') !!}
-    <p>{!! $userStory->status !!}</p>
-</div>
+    <span class="badge {!! $status->classcolor!!}">{!! $status->name !!}</span>
 
+</div>
+ 
+
+@include('tasks.tasksUserStory',['tasks'=>$userStory->tasks])

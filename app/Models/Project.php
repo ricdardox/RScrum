@@ -26,6 +26,7 @@ class Project extends Model {
     public $fillable = [
         'name',
         'description',
+        'sprints_durations',
         'statusproject_id'
     ];
 
@@ -45,15 +46,20 @@ class Project extends Model {
     public static $rules = [
         'name' => 'required|max:150',
         'description' => 'required|max:250',
+        'sprints_durations' => 'integer',
         'statusproject_id' => 'required|integer|exists:status_projects,id'
     ];
 
     public function userStories() {
         return $this->hasMany('\App\Models\UserStory');
     }
-    
+
     public function sprints() {
         return $this->hasMany('\App\Models\Sprint');
+    }
+
+    public function users() {
+        return $this->belongsToMany('\App\Models\User', 'project_users', 'project_id', 'user_id');
     }
 
     public function allTasks() {

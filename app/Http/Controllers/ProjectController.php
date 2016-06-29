@@ -78,7 +78,9 @@ class ProjectController extends InfyOmBaseController {
             return redirect(route('projects.index'));
         }
 
-        return view('projects.show')->with('project', $project);
+        //return view('projects.show')->with('project', $project);
+        return view('projects.userStoriesProject')
+                        ->with([ 'project'=>$project, 'userStories'=> $project->userStories]);
     }
 
     /**

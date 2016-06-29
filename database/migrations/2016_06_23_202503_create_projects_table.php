@@ -15,6 +15,7 @@ class CreateprojectsTable extends Migration {
             $table->increments('id');
             $table->string('name');
             $table->string('description');
+            $table->integer('sprints_durations');
             $table->integer('statusproject_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
