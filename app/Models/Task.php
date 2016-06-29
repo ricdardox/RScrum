@@ -62,7 +62,7 @@ class Task extends Model {
         'userstory_id' => 'required|integer|exists:user_stories,id',
         'user_id' => 'integer|exists:users,id',
         'description' => 'required',
-        'duration' => 'float'
+        'duration' => 'numeric'
     ];
 
     public function userStory() {

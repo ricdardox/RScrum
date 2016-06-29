@@ -13,7 +13,7 @@ class CreateuserStoriesTable extends Migration {
     public function up() {
         Schema::create('user_stories', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('description');
+            $table->text('description');
             $table->text('criteriaofacceptance');
             $table->integer('estimation');
             $table->integer('status');

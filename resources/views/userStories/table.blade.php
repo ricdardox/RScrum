@@ -11,18 +11,31 @@
     <!-- Widget: user widget style 1 -->
     <div class="box box-widget widget-user z-depth-5">
         <!-- Add the bg color to the header using any of the bg-* classes -->
-        <div class="widget-user-header bg-aqua-active">
-            <h3 class="widget-user-username">{!! $userStory->project->name!!}</h3>
+        <div class="widget-user-header bg-aqua-active"  style="height: auto">
+            <h3 class="widget-user-username">{!! $userStory->project->name or '' !!}</h3>
             <h5 class="widget-user-desc">{!! $userStory->description !!}</h5>
         </div>
         {{--*/$progress=$userStory->progress()/*--}}
-        <div class="progress progress-sm active">
-            <div class="progress-bar progress-bar-{{$taskCon->progressBar($progress)}} progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{$progress}}%">
-                <span class="sr-only">{{$progress}} % Complete</span>
+
+        <div class="panel box">
+                <div class="progress progress-sm active">
+                    <div class="progress-bar progress-bar-{{$taskCon->progressBar($progress)}} progress-bar-striped" role="progressbar" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: {{$progress}}%">
+                        <span class="sr-only">{{$progress}} % Complete</span>
+                    </div>
+                </div>
+            <div class="box-header">
+                <h4 class="box-title">
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" class="collapsed">
+                        Criteria of acceptance 
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse" aria-expanded="true">
+                <div class="box-body">
+                    <p class="padding-sides">{!! $userStory->criteriaofacceptance !!}</p>
+                </div>
             </div>
         </div>
-        <h4 class="padding-sides">Criteria of acceptance</h4>
-        <p class="padding-sides">{!! $userStory->criteriaofacceptance !!}</p>
         <div class="pull-right">
             {!! Form::open(['route' => ['userStories.destroy', $userStory->id], 'method' => 'delete']) !!}
             <div class='btn-group'>

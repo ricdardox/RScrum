@@ -73,7 +73,7 @@ class UserStory extends Model {
      */
     public static $rules = [
         'project_id' => 'required|integer|exists:projects,id',
-        'description' => 'required|max:150',
+        'description' => 'required',
         'criteriaofacceptance' => 'string',
         'estimation' => 'integer',
         'statususerstory_id' => 'required|integer|exists:status_userstories,id'
