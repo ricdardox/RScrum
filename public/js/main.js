@@ -8,5 +8,8 @@
 function main() {
 //    $('.time_').bootstrapMaterialDatePicker({date: false, time: true, format: 'HH:mm'});
     $('.dataTable').DataTable();
+    $('[data-toggle="tooltip"]').tooltip();
+    $('[data-toggle="popover"]').popover()
+
 }
 $(document).on('ready', main);

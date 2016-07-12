@@ -15,7 +15,8 @@
 
     @foreach($tasks as $task)
     <tr>
-        <td>{!! $task->userStory->description !!}</td>
+        {{--*/$userStory=$task->userStory/*--}}
+        <td><span data-toggle="popover" data-html="true" data-content="{!!$userStory->description!!}">{!! str_limit($userStory->description,30)  !!}</span></td>
         {{--*/$user=$task->user/*--}}
         <td><img width="30" src="{{ $userCon->getPathPublicUserImage(isset($user->image)?$user->image:'')}}"/> {{  $user->name or '' }}</td>
         <td>{!! $task->description !!}</td>

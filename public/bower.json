@@ -18,6 +18,7 @@
   ],
   "dependencies": {
     "bootstrap-material-datetimepicker": "^2.7.1",
-    "material-design-icons": "^2.2.3"
+    "material-design-icons": "^2.2.3",
+    "ng-modal": "https://rmontes-resolve@bitbucket.org/jnisperuzaresolve/ng-modal.git"
   }
 }

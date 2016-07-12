@@ -15,14 +15,19 @@ class CreateuserStoriesTable extends Migration {
             $table->increments('id');
             $table->text('description');
             $table->text('criteriaofacceptance');
-            $table->integer('estimation');
+            $table->float('estimation');
             $table->integer('status');
             $table->integer('project_id')->unsigned();
+            $table->integer('parentuserstory_id')->unsigned()->nullable();
             $table->integer('statususerstory_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
             $table->foreign('project_id')
                     ->references('id')->on('projects')
+                    ->onUpdate('cascade')
+                    ->onDelete('cascade');
+            $table->foreign('parentuserstory_id')
+                    ->references('id')->on('user_stories')
                     ->onUpdate('cascade')
                     ->onDelete('cascade');
             $table->foreign('statususerstory_id')

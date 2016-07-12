@@ -63,3 +63,15 @@ Route::resource('tasks', 'TaskController');
 Route::resource('users', 'UserController');
 
 Route::controller('userscon', 'UserController');
+Route::get('a', function() {
+    $client = \Basecamp\BasecampClient::factory(array(
+                'auth' => 'http',
+                'username' => 'rmontes@resolvestudio.co',
+                'password' => 'rmontes02',
+                'user_id' => 2956235,
+                'app_name' => 'RScrum',
+                'app_contact' => 'http://mywickedapplication.com'
+    ));
+    $response = $client->getProjects();
+    dd($response);
+});

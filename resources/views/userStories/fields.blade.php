@@ -1,8 +1,15 @@
 @inject('projectCon','\App\Http\Controllers\ProjectController')
+@inject('userStroryCon','\App\Http\Controllers\UserStoryController')
+
 <!-- Status Field -->
 <div class="form-group col-sm-6">
     {!! Form::label('project_id', 'Proyecto:') !!}
     {!! Form::select('project_id', $projectCon->getProjects(), null, ['class' => 'form-control']) !!}
+</div>
+<!-- Userstory Id Field -->
+<div class="form-group col-sm-6">
+    {!! Form::label('parentuserstory_id', 'User story:') !!}
+    {!! Form::select('parentuserstory_id', $userStroryCon->getUserStories(),null, ['class' => 'form-control']) !!}
 </div>
 
 <!-- Description Field -->
@@ -37,5 +44,4 @@
 </div>
 <script>
     CKEDITOR.replace('criteriaofacceptance');
-    CKEDITOR.replace('description');
 </script>

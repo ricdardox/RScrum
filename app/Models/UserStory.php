@@ -50,7 +50,8 @@ class UserStory extends Model {
         'description',
         'criteriaofacceptance',
         'estimation',
-        'statususerstory_id'
+        'statususerstory_id',
+        'parentuserstory_id'
     ];
 
     /**
@@ -62,7 +63,8 @@ class UserStory extends Model {
         'project_id' => 'integer',
         'description' => 'string',
         'criteriaofacceptance' => 'string',
-        'estimation' => 'integer',
+        'estimation' => 'float',
+        'parentuserstory_id' => 'integer',
         'statususerstory_id' => 'integer'
     ];
 
@@ -75,8 +77,9 @@ class UserStory extends Model {
         'project_id' => 'required|integer|exists:projects,id',
         'description' => 'required',
         'criteriaofacceptance' => 'string',
-        'estimation' => 'integer',
-        'statususerstory_id' => 'required|integer|exists:status_userstories,id'
+        'estimation' => 'numeric',
+        'statususerstory_id' => 'required|integer|exists:status_userstories,id',
+        'parentuserstory_id' => 'exists:user_stories,id'
     ];
 
     public function project() {
@@ -89,6 +92,14 @@ class UserStory extends Model {
 
     public function tasks() {
         return $this->hasMany('\App\Models\Task', 'userstory_id');
+    }
+
+    public function parentUS() {
+        return $this->belongsTo('\App\Models\UserStory', 'parentuserstory_id');
+    }
+
+    public function derivatesUS() {
+        return $this->hasMany('\App\Models\UserStory', 'parentuserstory_id');
     }
 
     public function progress() {

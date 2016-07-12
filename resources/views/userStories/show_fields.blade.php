@@ -34,6 +34,11 @@
     <span class="badge {!! $status->classcolor!!}">{!! $status->name !!}</span>
 
 </div>
- 
+
 
 @include('tasks.tasksUserStory',['tasks'=>$userStory->tasks])
+<br>
+<hr>
+<h3>Derivates</h3>
+<hr>
+@include('userStories.table',['userStories'=>$userStory->derivatesUS])
