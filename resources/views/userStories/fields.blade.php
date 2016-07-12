@@ -8,7 +8,7 @@
 </div>
 <!-- Userstory Id Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('parentuserstory_id', 'User story:') !!}
+    {!! Form::label('parentuserstory_id', 'User story Parent:') !!}
     {!! Form::select('parentuserstory_id', $userStroryCon->getUserStories(),null, ['class' => 'form-control']) !!}
 </div>
 
